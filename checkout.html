@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Thanh Toán - DrinkShop</title>
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="css/styles.css">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍹</text></svg>">
+</head>
+<body class="bg-gray-50">
+  
+  <!-- Navigation Bar -->
+  <nav class="ds-navbar fixed w-full top-0 z-50">
+    <div class="container mx-auto px-4 py-4">
+      <div class="flex items-center justify-between">
+        <a href="index.html" class="text-2xl font-bold ds-text-gradient">🍹 DrinkShop</a>
+        <div class="flex items-center space-x-4">
+          <a href="cart.html" class="text-gray-700 hover:text-green-600 font-medium">← Quay lại giỏ hàng</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Checkout Section -->
+  <section class="pt-32 pb-12">
+    <div class="container mx-auto px-4 max-w-6xl">
+      <h1 class="text-4xl font-bold text-center mb-12 text-gray-800 ds-fade-in">Thanh Toán Đơn Hàng</h1>
+
+      <form id="checkout-form" onsubmit="return handleCheckout(event)" class="grid lg:grid-cols-3 gap-8">
+        
+        <!-- Customer Information -->
+        <div class="lg:col-span-2 space-y-6">
+          
+          <!-- Thông tin người nhận -->
+          <div class="bg-white rounded-xl shadow-sm p-6">
+            <h2 class="text-2xl font-bold mb-6 text-gray-800">Thông Tin Người Nhận</h2>
+            
+            <div class="grid md:grid-cols-2 gap-4">
+              <div class="form-group">
+                <label class="form-label">Họ và tên *</label>
+                <input type="text" id="fullname" name="fullname" required
+                       class="form-input" placeholder="Nguyễn Văn A">
+                <div class="error-message hidden" id="fullname-error"></div>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">Số điện thoại *</label>
+                <input type="tel" id="phone" name="phone" required
+                       class="form-input" placeholder="0123456789">
+                <div class="error-message hidden" id="phone-error"></div>
+              </div>
+
+              <div class="form-group md:col-span-2">
+                <label class="form-label">Email *</label>
+                <input type="email" id="email" name="email" required
+                       class="form-input" placeholder="example@email.com">
+                <div class="error-message hidden" id="email-error"></div>
+              </div>
+
+              <div class="form-group md:col-span-2">
+                <label class="form-label">Địa chỉ nhận hàng *</label>
+                <textarea id="address" name="address" required rows="3"
+                          class="form-input" placeholder="Số nhà, tên đường, phường/xã, quận/huyện, thành phố"></textarea>
+                <div class="error-message hidden" id="address-error"></div>
+              </div>
+
+              <div class="form-group md:col-span-2">
+                <label class="form-label">Ghi chú đơn hàng (Tùy chọn)</label>
+                <textarea id="notes" name="notes" rows="2"
+                          class="form-input" placeholder="Ví dụ: Giao hàng giờ hành chính..."></textarea>
+              </div>
+            </div>
+          </div>
+
+          <!-- Phương thức thanh toán -->
+          <div class="bg-white rounded-xl shadow-sm p-6">
+            <h2 class="text-2xl font-bold mb-6 text-gray-800">Phương Thức Thanh Toán</h2>
+            
+            <div class="space-y-3">
+              <label class="flex items-center p-4 border-2 border-gray-200 rounded-lg cursor-pointer hover:border-green-500 transition">
+                <input type="radio" name="payment" value="cod" checked class="mr-3 text-green-600">
+                <div class="flex-1">
+                  <div class="font-semibold text-gray-800">Thanh toán khi nhận hàng (COD)</div>
+                  <div class="text-sm text-gray-600">Thanh toán bằng tiền mặt khi nhận hàng</div>
+                </div>
+                <span class="text-2xl">💵</span>
+              </label>
+
+              <label class="flex items-center p-4 border-2 border-gray-200 rounded-lg cursor-pointer hover:border-green-500 transition">
+                <input type="radio" name="payment" value="bank" class="mr-3 text-green-600">
+                <div class="flex-1">
+                  <div class="font-semibold text-gray-800">Chuyển khoản ngân hàng</div>
+                  <div class="text-sm text-gray-600">Chuyển khoản qua ATM/Internet Banking</div>
+                </div>
+                <span class="text-2xl">🏦</span>
+              </label>
+
+              <label class="flex items-center p-4 border-2 border-gray-200 rounded-lg cursor-pointer hover:border-green-500 transition">
+                <input type="radio" name="payment" value="momo" class="mr-3 text-green-600">
+                <div class="flex-1">
+                  <div class="font-semibold text-gray-800">Ví MoMo</div>
+                  <div class="text-sm text-gray-600">Thanh toán qua ví điện tử MoMo</div>
+                </div>
+                <span class="text-2xl">📱</span>
+              </label>
+
+              <label class="flex items-center p-4 border-2 border-gray-200 rounded-lg cursor-pointer hover:border-green-500 transition">
+                <input type="radio" name="payment" value="zalopay" class="mr-3 text-green-600">
+                <div class="flex-1">
+                  <div class="font-semibold text-gray-800">ZaloPay</div>
+                  <div class="text-sm text-gray-600">Thanh toán qua ví điện tử ZaloPay</div>
+                </div>
+                <span class="text-2xl">💳</span>
+              </label>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Order Summary -->
+        <div class="lg:col-span-1">
+          <div class="bg-white rounded-xl shadow-sm p-6 sticky top-24">
+            <h2 class="text-2xl font-bold mb-6 text-gray-800">Đơn Hàng</h2>
+
+            <!-- Products -->
+            <div id="checkout-items" class="space-y-3 mb-6 max-h-64 overflow-y-auto">
+              <!-- Sẽ được load bởi JavaScript -->
+            </div>
+
+            <!-- Summary -->
+            <div class="border-t pt-4 space-y-3">
+              <div class="flex justify-between text-gray-600">
+                <span>Tạm tính:</span>
+                <span id="checkout-subtotal" class="font-semibold">0₫</span>
+              </div>
+              <div class="flex justify-between text-gray-600">
+                <span>Phí vận chuyển:</span>
+                <span id="checkout-shipping" class="font-semibold">30.000₫</span>
+              </div>
+              <div class="border-t pt-3 flex justify-between text-xl font-bold text-gray-800">
+                <span>Tổng cộng:</span>
+                <span id="checkout-total" class="text-green-600">0₫</span>
+              </div>
+            </div>
+
+            <!-- Submit Button -->
+            <button type="submit" 
+                    class="w-full mt-6 bg-green-600 text-white py-4 rounded-lg font-bold text-lg hover:bg-green-700 transition shadow-lg hover:shadow-xl">
+              Xác Nhận Đặt Hàng
+            </button>
+
+            <!-- Policy -->
+            <div class="mt-6 pt-6 border-t">
+              <label class="flex items-start cursor-pointer">
+                <input type="checkbox" required class="mt-1 mr-3 text-green-600">
+                <span class="text-sm text-gray-600">
+                  Tôi đã đọc và đồng ý với 
+                  <a href="#" class="text-green-600 hover:underline">điều khoản và điều kiện</a> 
+                  của website
+                </span>
+              </label>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer py-12">
+    <div class="container mx-auto px-4">
+      <div class="grid md:grid-cols-4 gap-8 mb-8">
+        <div>
+          <h3 class="text-xl font-bold mb-4 text-white">DrinkShop</h3>
+          <p class="text-gray-400">Cửa hàng đồ uống trực tuyến uy tín, chất lượng cao với đa dạng sản phẩm.</p>
+        </div>
+
+        <div>
+          <h4 class="text-lg font-semibold mb-4 text-white">Liên Kết</h4>
+          <ul class="space-y-2 text-gray-400">
+            <li><a href="index.html" class="hover:text-green-400">Trang chủ</a></li>
+            <li><a href="products.html" class="hover:text-green-400">Sản phẩm</a></li>
+            <li><a href="about.html" class="hover:text-green-400">Giới thiệu</a></li>
+            <li><a href="contact.html" class="hover:text-green-400">Liên hệ</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="text-lg font-semibold mb-4 text-white">Hỗ Trợ</h4>
+          <ul class="space-y-2 text-gray-400">
+            <li><a href="#" class="hover:text-green-400">Chính sách đổi trả</a></li>
+            <li><a href="#" class="hover:text-green-400">Chính sách vận chuyển</a></li>
+            <li><a href="#" class="hover:text-green-400">Hướng dẫn đặt hàng</a></li>
+            <li><a href="#" class="hover:text-green-400">Câu hỏi thường gặp</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="text-lg font-semibold mb-4 text-white">Liên Hệ</h4>
+          <ul class="space-y-2 text-gray-400">
+            <li>📍 182 Lê Duẩn, thành phố Vinh,Nghệ An.</li>
+            <li>📞 034.742.5997</li>
+            <li>✉️ contact@drinkshop.vn</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="border-t border-gray-700 pt-8 text-center text-gray-400">
+        <p>&copy; 2025 DrinkShop. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/utils.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/cart.js"></script>
+  <script src="js/products.js"></script>
+  <script src="js/customeTheme.js"></script>
+  
+  <script>
+    // Khởi tạo
+    document.addEventListener('DOMContentLoaded', function() {
+      // Kiểm tra đăng nhập
+      if (!isLoggedIn()) {
+        showToast('Vui lòng đăng nhập để tiếp tục!', 'warning');
+        setTimeout(() => {
+          window.location.href = 'login.html';
+        }, 1500);
+        return;
+      }
+
+      // Kiểm tra giỏ hàng
+      const cart = getCart();
+      if (cart.length === 0) {
+        showToast('Giỏ hàng trống!', 'warning');
+        setTimeout(() => {
+          window.location.href = 'products.html';
+        }, 1500);
+        return;
+      }
+
+      // Load thông tin
+      loadCheckoutInfo();
+    });
+
+    // Load thông tin checkout
+    function loadCheckoutInfo() {
+      const cart = getCart();
+      const currentUser = getCurrentUser();
+
+      // Điền thông tin user nếu có
+      if (currentUser) {
+        document.getElementById('fullname').value = currentUser.name || '';
+        document.getElementById('email').value = currentUser.email || '';
+        document.getElementById('phone').value = currentUser.phone || '';
+        document.getElementById('address').value = currentUser.address || '';
+      }
+
+      // Hiển thị sản phẩm
+      const container = document.getElementById('checkout-items');
+      let html = '';
+      
+      cart.forEach(item => {
+        html += `
+          <div class="flex items-center space-x-3 pb-3 border-b">
+            <img src="${item.image}" alt="${item.name}" class="w-16 h-16 object-cover rounded-lg">
+            <div class="flex-1">
+              <div class="font-semibold text-sm text-gray-800">${item.name}</div>
+              <div class="text-xs text-gray-600">Size ${item.size} × ${item.quantity}</div>
+            </div>
+            <div class="font-bold text-green-600 text-sm">${formatCurrency(item.price * item.quantity)}</div>
+          </div>
+        `;
+      });
+      
+      container.innerHTML = html;
+
+      // Cập nhật tổng tiền
+      updateCheckoutSummary();
+    }
+
+    // Cập nhật tổng tiền
+    function updateCheckoutSummary() {
+      const total = getCartTotal();
+      const shipping = 30000;
+      const finalTotal = total + shipping;
+
+      document.getElementById('checkout-subtotal').textContent = formatCurrency(total);
+      document.getElementById('checkout-shipping').textContent = formatCurrency(shipping);
+      document.getElementById('checkout-total').textContent = formatCurrency(finalTotal);
+    }
+
+    // Xử lý đặt hàng
+    function handleCheckout(event) {
+      event.preventDefault();
+
+      // Validate form
+      if (!validateCheckoutForm()) {
+        return false;
+      }
+
+      // Lấy thông tin
+      const formData = {
+        fullname: document.getElementById('fullname').value.trim(),
+        phone: document.getElementById('phone').value.trim(),
+        email: document.getElementById('email').value.trim(),
+        address: document.getElementById('address').value.trim(),
+        notes: document.getElementById('notes').value.trim(),
+        payment: document.querySelector('input[name="payment"]:checked').value,
+        items: getCart(),
+        subtotal: getCartTotal(),
+        shipping: 30000,
+        total: getCartTotal() + 30000,
+        orderDate: new Date().toISOString()
+      };
+
+      // Tạo mã đơn hàng
+      const orderId = 'DH' + Date.now();
+
+      // Lưu đơn hàng
+      let orders = getLocalStorage('orders') || [];
+      orders.push({
+        id: orderId,
+        ...formData,
+        status: 'pending'
+      });
+      setLocalStorage('orders', orders);
+
+      // Xóa giỏ hàng
+      clearCart();
+
+      // Hiển thị thông báo thành công
+      showToast('Đặt hàng thành công! Mã đơn hàng: ' + orderId, 'success');
+
+      // Chuyển về trang chủ
+      setTimeout(() => {
+        window.location.href = 'index.html';
+      }, 2000);
+
+      return false;
+    }
+
+    // Validate form
+    function validateCheckoutForm() {
+      let isValid = true;
+
+      // Validate họ tên
+      const fullname = document.getElementById('fullname').value.trim();
+      if (fullname.length < 2) {
+        showError('fullname', 'Họ tên phải có ít nhất 2 ký tự');
+        isValid = false;
+      } else {
+        hideError('fullname');
+      }
+
+      // Validate số điện thoại
+      const phone = document.getElementById('phone').value.trim();
+      if (!isValidPhone(phone)) {
+        showError('phone', 'Số điện thoại không hợp lệ');
+        isValid = false;
+      } else {
+        hideError('phone');
+      }
+
+      // Validate email
+      const email = document.getElementById('email').value.trim();
+      if (!isValidEmail(email)) {
+        showError('email', 'Email không hợp lệ');
+        isValid = false;
+      } else {
+        hideError('email');
+      }
+
+      // Validate địa chỉ
+      const address = document.getElementById('address').value.trim();
+      if (address.length < 10) {
+        showError('address', 'Địa chỉ phải có ít nhất 10 ký tự');
+        isValid = false;
+      } else {
+        hideError('address');
+      }
+
+      if (!isValid) {
+        showToast('Vui lòng kiểm tra lại thông tin!', 'error');
+      }
+
+      return isValid;
+    }
+
+    // Hiển thị lỗi
+    function showError(fieldId, message) {
+      const input = document.getElementById(fieldId);
+      const errorDiv = document.getElementById(fieldId + '-error');
+      
+      input.classList.add('error');
+      errorDiv.textContent = message;
+      errorDiv.classList.remove('hidden');
+    }
+
+    // Ẩn lỗi
+    function hideError(fieldId) {
+      const input = document.getElementById(fieldId);
+      const errorDiv = document.getElementById(fieldId + '-error');
+      
+      input.classList.remove('error');
+      errorDiv.classList.add('hidden');
+    }
+
+    // Real-time validation
+    ['fullname', 'phone', 'email', 'address'].forEach(fieldId => {
+      document.getElementById(fieldId).addEventListener('blur', function() {
+        const value = this.value.trim();
+        
+        if (fieldId === 'fullname' && value.length >= 2) hideError(fieldId);
+        if (fieldId === 'phone' && isValidPhone(value)) hideError(fieldId);
+        if (fieldId === 'email' && isValidEmail(value)) hideError(fieldId);
+        if (fieldId === 'address' && value.length >= 10) hideError(fieldId);
+      });
+    });
+  </script>
+</body>
+</html>

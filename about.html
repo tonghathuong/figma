@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Giới Thiệu - DrinkShop</title>
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="css/styles.css">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍹</text></svg>">
+</head>
+<body class="bg-gray-50">
+  
+ <!-- Navigation Bar -->
+  <nav class="ds-navbar fixed w-full top-0 z-50">
+    <div class="container mx-auto px-4 py-4">
+      <div class="flex items-center justify-between">
+        <!-- Logo -->
+        <a href="index.html" class="text-2xl font-bold text-white flex gap-3 items-center">
+        <img src="/images/logo.jpg" class="h-12 rounded-full w-12" alt=""> DrinkShop
+        </a>
+
+        <!-- Desktop Menu -->
+        <div class="hidden md:flex items-center space-x-8">
+          <a href="index.html" class="ds-nav-link active text-white flow-y pb-1 hover:text-purple-500 font-medium">Trang chủ</a>
+          <a href="products.html" class="ds-nav-link text-white flow-y pb-1 hover:text-purple-500 font-medium">Sản phẩm</a>
+          <a href="about.html" class="ds-nav-link text-white flow-y pb-1 hover:text-purple-500 font-medium">Giới thiệu</a>
+          <a href="contact.html" class="ds-nav-link text-white flow-y pb-1 hover:text-purple-500 font-medium">Liên hệ</a>
+        </div>
+
+        <!-- Right Side Menu -->
+        <div class="flex items-center space-x-4">
+          <!-- Cart Icon -->
+          <a href="cart.html" class="relative">
+            <svg class="w-6 h-6 text-white flow-y hover:text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path>
+            </svg>
+            <span id="cart-count" class="absolute -top-2 -right-2 bg-red-500 text-white text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center hidden">0</span>
+          </a>
+
+          <!-- Auth Container -->
+          <div id="auth-container" class="hidden md:block">
+            <!-- Sẽ được cập nhật bởi JavaScript -->
+          </div>
+
+          <!-- Mobile Menu Button -->
+          <button onclick="toggleMobileMenu()" class="md:hidden text-white">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Mobile Menu -->
+      <div id="mobile-menu" class="ds-mobile-menu md:hidden mt-4">
+        <div class="flex flex-col space-y-4">
+          <a href="index.html" class="text-white hover:text-purple-600 font-medium">Trang chủ</a>
+          <a href="products.html" class="text-white hover:text-purple-600 font-medium">Sản phẩm</a>
+          <a href="about.html" class="text-white hover:text-purple-600 font-medium">Giới thiệu</a>
+          <a href="contact.html" class="text-white hover:text-purple-600 font-medium">Liên hệ</a>
+          <div class="pt-4 border-t border-gray-200">
+            <a href="login.html" class="block text-white hover:text-purple-600 font-medium mb-2">Đăng nhập</a>
+            <a href="register.html" class="block bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition text-center">Đăng ký</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="bg-gradient-to-r from-green-600 to-yellow-500 pt-32 pb-20 text-white relative">
+    <div class="container mx-auto px-4">
+      <div class="max-w-3xl mx-auto text-center ds-fade-in">
+        <h1 class="text-5xl md:text-6xl font-bold mb-6">
+          Giới thiệu về DrinkShop<br>
+        </h1>
+        <p class="text-xl md:text-2xl mb-8 text-white/90">
+          Câu chuyện về DrinkShop - Nơi khởi nguồn của những ly đồ uống tuyệt hảo
+        </p>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- About Content -->
+  <section class="py-16">
+    <div class="container mx-auto px-4">
+      
+      <!-- Story -->
+      <div class="max-w-4xl mx-auto mb-16">
+        <div class="bg-white rounded-xl shadow-sm p-8 ds-fade-in">
+          <h2 class="text-3xl font-bold mb-6 text-gray-800 text-center">Câu Chuyện Của Chúng Tôi</h2>
+          <div class="prose max-w-none text-gray-600 leading-relaxed space-y-4">
+            <p class="text-lg">
+              DrinkShop được thành lập vào năm 2024 với mong muốn mang đến cho khách hàng những ly đồ uống 
+              tươi ngon, chất lượng cao với giá cả hợp lý. Chúng tôi tin rằng mỗi ly đồ uống không chỉ là 
+              thức uống, mà còn là trải nghiệm, là khoảnh khắc thư giãn trong cuộc sống bận rộn.
+            </p>
+            <p>
+              Với đội ngũ barista chuyên nghiệp, được đào tạo bài bản, chúng tôi cam kết pha chế mỗi ly 
+              đồ uống với sự tận tâm và chú ý đến từng chi tiết nhỏ nhất. Nguyên liệu được chọn lọc kỹ 
+              càng từ các nhà cung cấp uy tín, đảm bảo an toàn vệ sinh thực phẩm.
+            </p>
+            <p>
+              Không chỉ dừng lại ở chất lượng sản phẩm, DrinkShop còn chú trọng đến trải nghiệm mua sắm 
+              của khách hàng. Website được thiết kế thân thiện, dễ sử dụng, cùng với dịch vụ giao hàng 
+              nhanh chóng, đảm bảo đồ uống đến tay bạn vẫn giữ nguyên độ tươi ngon ban đầu.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Mission & Vision -->
+      <div class="grid md:grid-cols-2 gap-8 mb-16">
+        <div class="bg-white rounded-xl shadow-sm p-8 text-center ds-hover-scale">
+          <div class="text-5xl mb-4">🎯</div>
+          <h3 class="text-2xl font-bold mb-4 text-gray-800">Sứ Mệnh</h3>
+          <p class="text-gray-600 leading-relaxed">
+            Mang đến những ly đồ uống chất lượng cao, phục vụ tận tình và tạo ra những trải nghiệm 
+            tuyệt vời cho khách hàng. Chúng tôi cam kết không ngừng cải tiến để đáp ứng và vượt qua 
+            mong đợi của khách hàng.
+          </p>
+        </div>
+
+        <div class="bg-white rounded-xl shadow-sm p-8 text-center ds-hover-scale">
+          <div class="text-5xl mb-4">🌟</div>
+          <h3 class="text-2xl font-bold mb-4 text-gray-800">Tầm Nhìn</h3>
+          <p class="text-gray-600 leading-relaxed">
+            Trở thành chuỗi cửa hàng đồ uống trực tuyến hàng đầu Việt Nam, được khách hàng tin tưởng 
+            và lựa chọn. Chúng tôi hướng đến việc mở rộng quy mô, phát triển thêm nhiều sản phẩm độc 
+            đáo và dịch vụ tiện ích hơn.
+          </p>
+        </div>
+      </div>
+
+      <!-- Core Values -->
+      <div class="mb-16">
+        <h2 class="text-3xl font-bold mb-12 text-gray-800 text-center">Giá Trị Cốt Lõi</h2>
+        <div class="grid md:grid-cols-4 gap-6">
+          <div class="text-center ds-fade-in">
+            <div class="bg-green-100 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4">
+              <span class="text-4xl">💎</span>
+            </div>
+            <h4 class="font-bold text-lg mb-2 text-gray-800">Chất Lượng</h4>
+            <p class="text-gray-600 text-sm">Cam kết chất lượng sản phẩm tốt nhất</p>
+          </div>
+
+          <div class="text-center ds-fade-in" style="animation-delay: 0.1s">
+            <div class="bg-green-100 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4">
+              <span class="text-4xl">❤️</span>
+            </div>
+            <h4 class="font-bold text-lg mb-2 text-gray-800">Tận Tâm</h4>
+            <p class="text-gray-600 text-sm">Phục vụ khách hàng bằng cả trái tim</p>
+          </div>
+
+          <div class="text-center ds-fade-in" style="animation-delay: 0.2s">
+            <div class="bg-green-100 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4">
+              <span class="text-4xl">🚀</span>
+            </div>
+            <h4 class="font-bold text-lg mb-2 text-gray-800">Đổi Mới</h4>
+            <p class="text-gray-600 text-sm">Không ngừng sáng tạo và cải tiến</p>
+          </div>
+
+          <div class="text-center ds-fade-in" style="animation-delay: 0.3s">
+            <div class="bg-green-100 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4">
+              <span class="text-4xl">🤝</span>
+            </div>
+            <h4 class="font-bold text-lg mb-2 text-gray-800">Uy Tín</h4>
+            <p class="text-gray-600 text-sm">Xây dựng niềm tin với khách hàng</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Statistics -->
+      <div class="bg-gradient-to-r from-green-600 to-green-700 rounded-2xl p-12 text-white mb-16">
+        <h2 class="text-3xl font-bold mb-12 text-center">Con Số Ấn Tượng</h2>
+        <div class="grid md:grid-cols-4 gap-8 text-center">
+          <div class="ds-fade-in">
+            <div class="text-5xl font-bold mb-2">10K+</div>
+            <div class="text-white/80">Khách hàng hài lòng</div>
+          </div>
+          <div class="ds-fade-in" style="animation-delay: 0.1s">
+            <div class="text-5xl font-bold mb-2">50+</div>
+            <div class="text-white/80">Sản phẩm đa dạng</div>
+          </div>
+          <div class="ds-fade-in" style="animation-delay: 0.2s">
+            <div class="text-5xl font-bold mb-2">5</div>
+            <div class="text-white/80">Chi nhánh trên toàn quốc</div>
+          </div>
+          <div class="ds-fade-in" style="animation-delay: 0.3s">
+            <div class="text-5xl font-bold mb-2">100%</div>
+            <div class="text-white/80">Cam kết chất lượng</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Team -->
+      <div class="mb-16">
+        <h2 class="text-3xl font-bold mb-12 text-gray-800 text-center">Đội Ngũ Của Chúng Tôi</h2>
+        <div class="grid md:grid-cols-3 gap-8">
+          <div class="bg-white rounded-xl shadow-sm text-center p-6 ds-hover-scale">
+            <div class="w-32 h-32 bg-gradient-to-br from-green-400 to-green-600 rounded-full mx-auto mb-4 flex items-center justify-center text-white text-4xl font-bold">
+              NT
+            </div>
+            <h4 class="font-bold text-lg mb-1 text-gray-800">Nguyễn Văn Tèo</h4>
+            <p class="text-green-600 font-medium mb-3">CEO & Founder</p>
+            <p class="text-gray-600 text-sm">Người sáng lập với tầm nhìn chiến lược và đam mê kinh doanh</p>
+          </div>
+
+          <div class="bg-white rounded-xl shadow-sm text-center p-6 ds-hover-scale">
+            <div class="w-32 h-32 bg-gradient-to-br from-blue-400 to-blue-600 rounded-full mx-auto mb-4 flex items-center justify-center text-white text-4xl font-bold">
+              TL
+            </div>
+            <h4 class="font-bold text-lg mb-1 text-gray-800">Trần Thị Lệ</h4>
+            <p class="text-green-600 font-medium mb-3">Head Barista</p>
+            <p class="text-gray-600 text-sm">Chuyên gia pha chế với hơn 10 năm kinh nghiệm</p>
+          </div>
+
+          <div class="bg-white rounded-xl shadow-sm text-center p-6 ds-hover-scale">
+            <div class="w-32 h-32 bg-gradient-to-br from-purple-400 to-purple-600 rounded-full mx-auto mb-4 flex items-center justify-center text-white text-4xl font-bold">
+              PH
+            </div>
+            <h4 class="font-bold text-lg mb-1 text-gray-800">Phạm Văn Hải</h4>
+            <p class="text-green-600 font-medium mb-3">Operations Manager</p>
+            <p class="text-gray-600 text-sm">Quản lý vận hành và đảm bảo chất lượng dịch vụ</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- CTA -->
+      <div class="bg-white rounded-xl shadow-sm p-12 text-center bg-gradient-to-r from-green-50 to-blue-50">
+        <h2 class="text-3xl font-bold mb-4 text-gray-800">Sẵn Sàng Bắt Đầu?</h2>
+        <p class="text-gray-600 mb-8 text-lg">Khám phá bộ sưu tập đồ uống đa dạng của chúng tôi ngay hôm nay!</p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a href="products.html" class="bg-green-600 text-white px-8 py-3 rounded-lg font-bold hover:bg-green-700 transition">
+            Xem Sản Phẩm
+          </a>
+          <a href="contact.html" class="bg-white border-2 border-green-600 text-green-600 px-8 py-3 rounded-lg font-bold hover:bg-green-50 transition">
+            Liên Hệ Chúng Tôi
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer py-12">
+    <div class="container mx-auto px-4">
+      <div class="grid md:grid-cols-4 gap-8 mb-8">
+        <div>
+          <h3 class="text-xl font-bold mb-4 text-white">DrinkShop</h3>
+          <p class="text-gray-400">Cửa hàng đồ uống trực tuyến uy tín, chất lượng cao với đa dạng sản phẩm.</p>
+        </div>
+
+        <div>
+          <h4 class="text-lg font-semibold mb-4 text-white">Liên Kết</h4>
+          <ul class="space-y-2 text-gray-400">
+            <li><a href="index.html" class="hover:text-green-400">Trang chủ</a></li>
+            <li><a href="products.html" class="hover:text-green-400">Sản phẩm</a></li>
+            <li><a href="about.html" class="hover:text-green-400">Giới thiệu</a></li>
+            <li><a href="contact.html" class="hover:text-green-400">Liên hệ</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="text-lg font-semibold mb-4 text-white">Hỗ Trợ</h4>
+          <ul class="space-y-2 text-gray-400">
+            <li><a href="#" class="hover:text-green-400">Chính sách đổi trả</a></li>
+            <li><a href="#" class="hover:text-green-400">Chính sách vận chuyển</a></li>
+            <li><a href="#" class="hover:text-green-400">Hướng dẫn đặt hàng</a></li>
+            <li><a href="#" class="hover:text-green-400">Câu hỏi thường gặp</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="text-lg font-semibold mb-4 text-white">Liên Hệ</h4>
+          <ul class="space-y-2 text-gray-400">
+            <li>📍 182 Lê Duẩn, thành phố Vinh,Nghệ An.</li>
+            <li>📞 034.742.5997</li>
+            <li>✉️ contact@drinkshop.vn</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="border-t border-gray-700 pt-8 text-center text-gray-400">
+        <p>&copy; 2025 DrinkShop. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/utils.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/cart.js"></script>
+  <script src="js/customeTheme.js"></script>
+</body>
+</html>

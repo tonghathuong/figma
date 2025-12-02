@@ -1,0 +1,239 @@
+/* ================================
+   CUSTOM ANIMATIONS & EFFECTS FOR DRINKSHOP
+   Tailwind CSS handles all utility classes
+   Only custom animations and unique styles here
+   ================================ */
+
+/* Smooth Scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* ================================
+   CUSTOM ANIMATIONS
+   ================================ */
+
+/* Fade In Animation */
+@keyframes ds-fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.ds-fade-in {
+  animation: ds-fadeIn 0.6s ease-out;
+}
+
+/* Slide In from Left */
+@keyframes ds-slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.ds-slide-in-left {
+  animation: ds-slideInLeft 0.6s ease-out;
+}
+
+/* Slide In from Right */
+@keyframes ds-slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.ds-slide-in-right {
+  animation: ds-slideInRight 0.6s ease-out;
+}
+
+/* Zoom In Animation */
+@keyframes ds-zoomIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.ds-zoom-in {
+  animation: ds-zoomIn 0.4s ease-out;
+}
+
+/* Pulse Animation */
+@keyframes ds-pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+}
+
+.ds-pulse {
+  animation: ds-pulse 0.5s ease-in-out;
+}
+
+/* Shake Animation */
+@keyframes ds-shake {
+  0%, 100% { transform: translateX(0); }
+  10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+  20%, 40%, 60%, 80% { transform: translateX(5px); }
+}
+
+.ds-shake {
+  animation: ds-shake 0.5s ease-in-out;
+}
+
+/* Spinner Animation */
+@keyframes ds-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.ds-spinner {
+  border: 3px solid rgba(0, 0, 0, 0.1);
+  border-left-color: #10b981;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: ds-spin 1s linear infinite;
+}
+
+/* ================================
+   CUSTOM HOVER EFFECTS
+   ================================ */
+
+/* Hover Scale Effect for Cards */
+.ds-hover-scale {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.ds-hover-scale:hover {
+  transform: translateY(-5px) scale(1.02);
+}
+
+/* Product Card Image Overlay Effect */
+.ds-product-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.ds-product-card .ds-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.ds-product-card:hover .ds-overlay {
+  opacity: 1;
+}
+
+.ds-product-card img {
+  transition: transform 0.5s ease;
+}
+
+.ds-product-card:hover img {
+  transform: scale(1.1);
+}
+
+/* ================================
+   CUSTOM NAVBAR EFFECTS
+   ================================ */
+
+.ds-navbar {
+  backdrop-filter: blur(10px);
+  transition: box-shadow 0.3s ease;
+}
+
+.ds-navbar.scrolled {
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+/* Nav Link Underline Effect */
+.ds-nav-link {
+  position: relative;
+}
+
+.ds-nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: #10b981;
+  transition: width 0.3s ease;
+}
+
+.ds-nav-link:hover::after,
+.ds-nav-link.active::after {
+  width: 100%;
+}
+
+/* Mobile Menu Animation */
+.ds-mobile-menu {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+}
+
+.ds-mobile-menu.open {
+  max-height: 500px;
+}
+
+/* ================================
+   CUSTOM BACKGROUNDS & GRADIENTS
+   ================================ */
+
+/* Text Gradient Effect */
+.ds-text-gradient {
+  background: linear-gradient(135deg, #10b981, #f59e0b);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f9fafb;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #10b981;
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #059669;
+}
